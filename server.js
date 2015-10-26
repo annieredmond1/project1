@@ -37,6 +37,22 @@ app.get('/signup', function (req, res) {
 	res.render('signup');
 });
 
+// show user profile page
+app.get('/profile', function (req, res) {
+	console.log('session user id: ', req.session.userId);
+  	// find the user currently logged in
+  	User.findOne({_id: req.session.userId}, function (err, currentUser) {
+  		if (err) {
+  			console.log('database error: ', err);
+  			res.redirect('/login');
+  		} else {
+      		// render profile template with user's data
+  			console.log('loading profile of logged in user');
+  			res.render('user-show.ejs', {user: currentUser});
+  		}
+  	});
+});
+
 // create new user 
 app.post('/users', function (req, res) {
 	console.log(req.body);
@@ -61,30 +77,20 @@ app.post('/sessions', function (req, res) {
 	});
 });
 
-// show user profile page
-app.get('/profile', function (req, res) {
-	console.log('session user id: ', req.session.userId);
-  	// find the user currently logged in
-  	User.findOne({_id: req.session.userId}, function (err, currentUser) {
-  		if (err) {
-  			console.log('database error: ', err);
-  			res.redirect('/login');
-  		} else {
-      		// render profile template with user's data
-  			console.log('loading profile of logged in user');
-  			res.render('user-show.ejs', {user: currentUser});
-  		}
-  	});
-  });
-
+// logout session
 app.get('/logout', function (req, res) {
 	// remove the session user id
 	req.session.userId = null;
  	// redirect to login (for now)
-  	res.redirect('/login');
-  });
+	res.redirect('/login');
+});
 
-// view all users
+app.listen(3000, function() {
+  console.log("listening on port 3000");
+});
+
+
+// // view all users
 // app.get('/users', function (req, res){
 // 	db.User.find({}, function (err, users){
 // 		//CHECK
@@ -108,7 +114,3 @@ app.get('/logout', function (req, res) {
 // 		res.json(post);
 // 	});
 // });
-
-app.listen(3000, function() {
-  console.log("listening on port 3000"); //CHECK
-});
