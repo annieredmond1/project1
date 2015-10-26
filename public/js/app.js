@@ -1,32 +1,59 @@
-// CLIENT-side
+// CLIENT-SIDE //
 
-$(document).ready(function() {
+$(document).ready(function(){
 
-	// sign-up and create new user
-	$('#signup-form').on('submit', function (e) {
+	//LOGIN: existing user
+	$('#login-form').on('submit', function (e){
 		e.preventDefault();
 
-		// save sign-up form inputs as user data
-		var userData = $(this).serialize();
-
+		// save login form inputs (email, password) as userLogin
+		var userLogin = $(this).serialize();
+		
 		// post new user data
 		$.ajax({
 			type: 'POST',
-			url: '/signup',
-			data: userData,
-			success: function(data) { 
-				console.log(data); // sanity check
+			url: '/login',
+			data: userLogin,
+			success: function(data){ 
+				//CHECK
+				// console.log(data);
 			},
-			error: function(err) {
-				console.log(err); // sanity check
+			error: function(err){
+				//CHECK
+				// console.log(err);
+			},
+			complete: function(status){
+				window.location.href = "/";
 			}
 		});
 	});
 
 
+	// // Sign-Up: create new user
+	// $('#signup-form').on('submit', function (e){
+	// 	e.preventDefault();
 
-
-
+	// 	// save sign-up form inputs as user data
+	// 	var userData = $(this).serialize();
+		
+	// 	// post new user data
+	// 	$.ajax({
+	// 		type: 'POST',
+	// 		url: '/signup',
+	// 		data: userData,
+	// 		success: function(data){ 
+	// 			//CHECK
+	// 			// console.log(data);
+	// 		},
+	// 		error: function(err){
+	// 			//CHECK
+	// 			// console.log(err);
+	// 		},
+	// 		complete: function(status){
+	// 			window.location.href = "/";
+	// 		}
+	// 	});
+	// });
 
 
 });

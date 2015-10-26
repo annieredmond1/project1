@@ -1,4 +1,4 @@
-// SERVER-side
+// SERVER-SIDE //
 
 // REQUIREMENTS //
 var express = require('express'),
@@ -24,14 +24,17 @@ app.get('/login', function (req, res){
 	res.render('login');
 });
 
-// render sign-up page
-app.get('/signup', function (req, res){
-	res.render('signup');
+// render user profile page
+app.get('/profile', function (req, res){
+	res.render('profile_page');
 });
 
-app.listen(3000, function(){
-  console.log("listening on port 3000"); //CHECK
+// render account details page
+app.get('/account', function (req, res){
+	res.render('profile_edit');
 });
+
+
 
 // view all users
 // app.get('/users', function (req, res){
@@ -88,3 +91,8 @@ app.listen(3000, function(){
 // app.get('/users/:id', function (req,res){
 // 	res.render('profile');
 // });
+
+
+app.listen(3000, function(){
+  console.log("listening on port 3000"); //CHECK
+});
