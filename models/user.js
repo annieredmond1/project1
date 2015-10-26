@@ -4,7 +4,7 @@ var UserSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	instrument: String, // check boxes
-	// genre: String,
+	genre: String,
 	login: {
 		username: String,
 		password: String,

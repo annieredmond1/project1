@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 var BandSchema = new mongoose.Schema({
 	name: String,
 	location: String,
-	// genre: String,
+	genre: String,
 	members: [Users]
 });
 
