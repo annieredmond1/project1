@@ -9,7 +9,6 @@ $(document).ready(function(){
 		// save login form inputs (email, password) as userLogin
 		var userLogin = $(this).serialize();
 		
-		// post new user data
 		$.ajax({
 			type: 'POST',
 			url: '/login',

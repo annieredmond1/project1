@@ -35,7 +35,6 @@ app.get('/account', function (req, res){
 });
 
 
-
 // view all users
 // app.get('/users', function (req, res){
 // 	db.User.find({}, function (err, users){

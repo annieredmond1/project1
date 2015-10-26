@@ -3,8 +3,8 @@ var mongoose = require("mongoose");
 var UserSchema = new mongoose.Schema({
 	name: String,
 	location: String,
-	instrument: String, // check boxes
 	genre: String,
+	instrument: String, // check boxes
 	login: {
 		username: String,
 		password: String,
