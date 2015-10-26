@@ -1,31 +1,31 @@
 // CLIENT-SIDE //
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	//LOGIN: redirect new users to sign-up
-	$('#login-redirect').on('submit', function (e){
+	$('#login-redirect').on('submit', function (e) {
 		e.preventDefault();
 
 		// send GET request to /login to redirect to /signup
 		$.ajax({
 			type: 'GET',
 			url: '/login',
-			success: function(data){ 
+			success: function(data) { 
 				//CHECK
 				// console.log(data);
 			},
-			error: function(err){
+			error: function(err) {
 				//CHECK
 				// console.log(err);
 			},
-			complete: function(status){
+			complete: function(status) {
 				window.location.href = "/signup";
 			}
 		});
 	});
 
 	//LOGIN: existing user
-	$('#login-form').on('submit', function (e){
+	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
 
 		// select login form and serialize its data
@@ -36,22 +36,22 @@ $(document).ready(function(){
 			type: 'POST',
 			url: '/login',
 			data: loginData,
-			success: function(data){ 
+			success: function(data) { 
 				//CHECK
 				// console.log(data);
 			},
-			error: function(err){
+			error: function(err) {
 				//CHECK
 				// console.log(err);
 			},
-			complete: function(status){
-				window.location.href = "/";
+			complete: function(status) {
+				window.location.href = "/profile";
 			}
 		});
 	});
 
 	//SIGN-UP: create new user
-	$('#signup-form').on('submit', function (e){
+	$('#signup-form').on('submit', function (e) {
 		e.preventDefault();
 	    
 	    // select sign-up form and serialize its data
@@ -62,19 +62,17 @@ $(document).ready(function(){
 	    	type: 'POST',
 	    	url: '/users',
 	    	data: signupData,
-    		success: function(data){ 
+    		success: function(data) { 
     			//CHECK
     			// console.log(data);
     		},
-    		error: function(err){
+    		error: function(err) {
     			//CHECK
     			// console.log(err);
     		},
-    		complete: function(status){
-    			window.location.href = "/";
+    		complete: function(status) {
+    			window.location.href = "/profile";
     		}
     	});
 	});
-
-
 });
