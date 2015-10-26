@@ -3,13 +3,13 @@
 // REQUIREMENTS //
 var express = require('express'),
     app = express(),
-    path = require('path'), // What this?
+    path = require('path'), //WHAT IS THIS?
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
+    // session = require('express-session'),
     db = require('./models/index.js');
 
-// CONFIG //
-
+// MIDDLEWARE //
 // set ejs as view engine
 app.set('view engine', 'ejs');
 // serve js & css files
@@ -17,22 +17,44 @@ app.use('/static', express.static('public'));
 // body parser config to accept our datatypes
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// app.use(session({
+//   saveUninitialized: true,
+//   resave: true,
+//   secret: 'SuperSecretCookie',
+//   cookie: { maxAge: 30 * 60 * 1000 }
+// }));
+
+
 // ROUTES //
 
-// render log-in page
+// show login page
 app.get('/login', function (req, res){
 	res.render('login');
 });
 
-// render user profile page
-app.get('/profile', function (req, res){
-	res.render('profile_page');
+// show sign-up page
+app.get('/signup', function (req, res){
+	res.render('signup');
 });
 
-// render account details page
-app.get('/account', function (req, res){
-	res.render('profile_edit');
-});
+// create new user
+// app.post('/users', function (req, res){
+// 	User.createSecure(req.body.email, req.body.password, function (err, newUser) {
+// 	   req.session.userId = newUser._id;
+// 	   res.redirect('/profile');
+// 	 });
+// });
+
+
+// // show user profile page
+// app.get('/profile', function (req, res){
+// 	res.render('profile_page');
+// });
+
+// // show account details page
+// app.get('/account', function (req, res){
+// 	res.render('profile_edit');
+// });
 
 
 // view all users
