@@ -11,8 +11,8 @@ var UserSchema = new mongoose.Schema({
 	passwordDigest: String,
 	name: String,
 	location: String,
-	genre: String,
-	instrument: String //check boxes
+	genres: String,
+	instruments: String //check boxes
 });
 
 // use form data to create db user, with a hashed and salted password

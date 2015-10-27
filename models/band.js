@@ -5,7 +5,7 @@ var mongoose = require("mongoose"),
 var BandSchema = new mongoose.Schema({
 	name: String,
 	location: String,
-	genre: String,
+	genres: String,
 	members: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 

@@ -8,7 +8,8 @@
 <h1>Edit User Profile</h1>
 
 <!-- User Profile Form -->
-<form role="form" id="user-profile-form">
+<form role="form" id="profile-form">
+  <input id="userId" type="hidden" value="<%= user._id %>">
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name">

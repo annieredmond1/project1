@@ -8,6 +8,7 @@
 <h1>User Profile Page</h1>
 
 <div class="container">
+<a href="/users/<%= user._id %>/edit">Edit profile</a>
 
 <!-- Profile Pic/Info -->
 <div class="row">
@@ -15,7 +16,7 @@
     <img src="http://placehold.it/200x200">
   </div>
   <div class="col-md-6">
-    <h2>Name:</h2>
+    <h2>Name: <%= user.name %></h2>
     <h2>Location:</h1>
     <h2>Genres:</h2>
     <h2>Instruments:</h2>

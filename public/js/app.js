@@ -31,18 +31,17 @@ $(document).ready(function() {
 		// send POST request to /login with the form data
 		$.ajax({
 			type: 'POST',
-			url: '/login',
+			url: '/sessions',
 			data: loginData,
 			success: function(data) { 
 				//CHECK
 				// console.log(data);
+				var userId = data._id;
+    			window.location.href = "/users/" + userId;
 			},
 			error: function(err) {
 				//CHECK
 				// console.log(err);
-			},
-			complete: function(status) {
-				window.location.href = "/profile";
 			}
 		});
 	});
@@ -59,15 +58,39 @@ $(document).ready(function() {
 	    	data: signupData,
     		success: function(data) { 
     			//CHECK
-    			// console.log(data);
+    			console.log(data);
+    			var userId = data._id;
+    			window.location.href = "/users/" + userId + "/edit";
     		},
     		error: function(err) {
     			//CHECK
-    			// console.log(err);
-    		},
-    		complete: function(status) {
-    			window.location.href = "/profile";
+    			console.log(err);
     		}
     	});
 	});
+
+	//UPDATE profile
+	$('#profile-form').on('submit', function (e) {
+		e.preventDefault();
+		// select profile form and serilize its data
+		var profileData = $(this).serialize();
+		var userId = $('#userId').val();
+		// send PUT request to /users/:id with the form data
+		$.ajax({
+			type: 'PUT',
+			url: '/users/' + userId,
+			data: profileData,
+			success: function(data) {
+				//CHECK
+				console.log(data);
+				window.location.href = "/users/" + userId;
+			},
+			error: function(err) {
+				//CHECK
+				console.log(err);
+			}
+		});
+	});
+
+
 });
