@@ -1,6 +1,7 @@
-var mongoose = require("mongoose");
-	// bcrypt = require('bcrypt');
+var mongoose = require("mongoose"),
+	bcrypt = require('bcrypt');
 
+// create schema
 var UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
@@ -11,7 +12,7 @@ var UserSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	genre: String,
-	instrument: String // check boxes
+	instrument: String //check boxes
 });
 
 // use form data to create db user, with a hashed and salted password
@@ -59,5 +60,7 @@ UserSchema.methods.checkPassword = function(password) {
 	return bcrypt.compareSync(password, this.passwordDigest);
 };
 
+// create a model
 var User = mongoose.model('User', UserSchema);
+// export file
 module.exports = User;
