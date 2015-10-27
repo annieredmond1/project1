@@ -24,5 +24,8 @@
     "express": "^4.13.3",
     "express-session": "^1.12.0",
     "mongoose": "^4.2.1"
+  },
+  "scripts": {
+    "start": "node server.js"
   }
 }
