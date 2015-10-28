@@ -12,7 +12,7 @@ $(document).ready(function() {
 			method: 'POST',
 			url: '/sessions',
 			data: loginData,
-			success: function(data) { 
+			success: function(data) {
 				// console.log(data); //CHECK
 				var userId = data._id;
     			window.location.href = "/users/" + userId;
@@ -33,7 +33,7 @@ $(document).ready(function() {
 	    	method: 'POST',
 	    	url: '/users',
 	    	data: signupData,
-    		success: function(data) { 
+    		success: function(data) {
     			// console.log(data); //CHECK
     			var userId = data._id;
     			window.location.href = "/users/" + userId + "/edit";
@@ -59,7 +59,6 @@ $(document).ready(function() {
 			data: profileData,
 			success: function(data) {
 				// console.log(data); //CHECK
-
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
