@@ -50,8 +50,8 @@ $(document).ready(function() {
 		// select profile form and serilize its data
 		var profileData = $(this).serialize();
 		var userId = $('#userId').val();
-		console.log(userId); //CHECK
-		console.log(profileData); //CHECK
+		// console.log(userId); //CHECK
+		// console.log(profileData); //CHECK
 		// send PUT request to /users/:id with the form data
 		$.ajax({
 			method: 'PUT',
@@ -59,11 +59,12 @@ $(document).ready(function() {
 			data: profileData,
 			success: function(data) {
 				// console.log(data); //CHECK
+
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
 			}
 		});
-		window.location.href = "/users/" + userId;
+		window.location.href = "/users/" + userId; //WHY does this have to be after ajax instead of under success?
 	});
 });

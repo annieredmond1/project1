@@ -12,12 +12,7 @@ var UserSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	genres: String,
-	instruments: {
-		guitar: {type: Boolean, default: false},
-		bass: {type: Boolean, default: false},
-		drums: {type: Boolean, default: false},
-		keyboard: {type: Boolean, default: false}
-	}
+	instruments: String
 });
 
 // use form data to create db user, with a hashed and salted password

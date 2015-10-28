@@ -75,28 +75,24 @@ app.post('/users', function (req, res) {
 	});
 });
 
-// update profile
+// *TODO* update profile
 app.put('/users/:userId', function (req, res) {
 	// console.log("user id is: ", req.params); //CHECK
     // console.log("user retrieved"); //CHECK
     // change this to findByIdAndUpdate
-    db.User.findByIdAndUpdate(req.session.userId, {
+    db.User.findByIdAndUpdate(req.session.userId,
+    { 
     	$set: {
     		name: req.body.name,
-    		location: req.body.location,
-    		genres: req.body.genres
-    		// instruments: {
-    		// 	guitar: req.body.guitar,
-    		// 	bass: req.body.bass,
-    		// 	drums: req.body.drums,
-    		// 	keyboard: req.body.keyboard
-    		// }
-    	}
-    }, function (err, currentUser) {
-    	res.redirect('/users/' + req.session.userId);
-    });
+			location: req.body.location,
+			genres: req.body.genres,
+			instruments: req.body.instruments
+		}
+	}, 
+	function (err, currentUser) {
+		res.redirect('/users/' + req.session.userId);
+	});
 });
-
 
 // authenticate the user and set the session
 app.post('/sessions', function (req, res) {

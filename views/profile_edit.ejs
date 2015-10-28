@@ -15,26 +15,19 @@
   
   <div class="form-group">
     <label for="name">Name:</label>
-    <input type="text" class="form-control" id="name" name="name">
+    <input type="text" class="form-control" id="name" name="name" value="<%= user.name %>">
   </div>
   <div class="form-group">
     <label for="location">Location:</label>
-    <input type="text" class="form-control" id="location" name="location">
+    <input type="text" class="form-control" id="location" name="location" value="<%= user.location %>">
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <label for="genres">Genres:</label>
-    <input type="text" class="form-control" id="genres" name="genres">
+    <input type="text" class="form-control" id="genres" name="genres" value="<%= user.genres %>">
   </div>
-
-  <!-- Instrument Selection Checkbox -->
   <div class="form-group">
     <label for="instruments">Instruments:</label>
-    <div class="checkbox" id="instruments">
-      <label><input type="checkbox" id="guitar" name="guitar" value="Guitar"> Guitar</label><br>
-      <label><input type="checkbox" id="bass" name="bass" value="Bass"> Bass</label><br>
-      <label><input type="checkbox" id="drums" name="drums" value="Drums"> Drums</label><br>
-      <label><input type="checkbox" id="keyboard" name="keyboard" value="Keyboard"> Keyboard</label><br>
-    </div>
+    <input type="text" class="form-control" id="instruments" name="instruments" value="<%= user.instruments %>">
   </div>
 
   <button type="submit" class="btn btn-default">Update Profile</button>
@@ -43,3 +36,17 @@
 </div>
 </body>
 </html>
+
+
+<!-- Instrument Selection Checkbox (radio) -->
+<!-- <label for="instruments">Instruments:</label>
+<div class="radio" id="instruments">
+  <label><input type="radio" id="guitar" name="guitar" value="Guitar">Guitar</label>
+  <br>
+  <label><input type="radio" id="bass" name="bass" value="Bass">Bass</label>
+  <br>
+  <label><input type="radio" id="drums" name="drums" value="Drums">Drums</label>
+  <br>
+  <label><input type="radio" id="keyboard" name="keyboard" value="Keyboard">Keyboard</label>
+  <br>
+</div> -->
