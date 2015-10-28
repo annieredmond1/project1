@@ -37,11 +37,27 @@ app.get('/signup', function (req, res) {
 	res.render('signup');
 });
 
+// show user profile view page
+app.get('/users/:userId', function (req, res) {
+	// console.log('session user id: ', req.session.userId); //CHECK
+  	// find the user currently logged in
+  	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
+  		if (err) {
+  			// console.log('database error: ', err); //CHECK
+  			res.redirect('/login');
+  		} else {
+      		// render profile template with user's data
+  			// console.log('loading profile of logged in user'); //CHECK
+  			res.render('profile_view', {user: currentUser});
+  		}
+  	});
+});
+
 // show profile edit page
 app.get('/users/:userId/edit', function (req, res) {
 	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
   		if (err) {
-  			console.log('database error: ', err); //CHECK
+  			// console.log('database error: ', err); //CHECK
   			res.redirect('/login');
   		} else {
       		// render profile editing template with user's data
@@ -50,25 +66,9 @@ app.get('/users/:userId/edit', function (req, res) {
   	});
 });
 
-// show user profile page
-app.get('/users/:userId', function (req, res) {
-	console.log('session user id: ', req.session.userId); //CHECK
-  	// find the user currently logged in
-  	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
-  		if (err) {
-  			console.log('database error: ', err); //CHECK
-  			res.redirect('/login');
-  		} else {
-      		// render profile template with user's data
-  			console.log('loading profile of logged in user'); //CHECK
-  			res.render('profile_page', {user: currentUser});
-  		}
-  	});
-});
-
 // create new user 
 app.post('/users', function (req, res) {
-	console.log(req.body); //CHECK
+	// console.log(req.body); //CHECK
 	db.User.createSecure(req.body.email, req.body.password, function (err, newUser) {
 		req.session.userId = newUser._id;
 		res.json(newUser);
@@ -77,38 +77,36 @@ app.post('/users', function (req, res) {
 
 // update profile
 app.put('/users/:userId', function (req, res) {
-	console.log("user id is: ", req.params); //CHECK
-    console.log("user retrieved"); //CHECK
+	// console.log("user id is: ", req.params); //CHECK
+    // console.log("user retrieved"); //CHECK
     // change this to findByIdAndUpdate
-    db.User.findByIdAndUpdate(userId, {
+    db.User.findByIdAndUpdate(req.session.userId, {
     	$set: {
-    		name:
-    		location:
-    		genres:
-
+    		name: req.body.name,
+    		location: req.body.location,
+    		genres: req.body.genres
+    		// instruments: {
+    		// 	guitar: req.body.guitar,
+    		// 	bass: req.body.bass,
+    		// 	drums: req.body.drums,
+    		// 	keyboard: req.body.keyboard
+    		// }
     	}
-    } }
-});
-	// db.User.find({_id: req.params.userId}, function (err, user) {
-	// 	if (err) {
-	// 		console.log(err); //CHECK
-	// 	} else {
-	// 		res.json(user);
-	// 	}
-	// });
+    }, function (err, currentUser) {
+    	res.redirect('/users/' + req.session.userId);
+    });
 });
 
-// user.save ??
 
 // authenticate the user and set the session
 app.post('/sessions', function (req, res) {
   	// call authenticate function to check if password user entered is correct
 	db.User.authenticate(req.body.email, req.body.password, function (err, loggedInUser) {
 		if (err) {
-			console.log('authentication error: ', err); //CHECK
+			// console.log('authentication error: ', err); //CHECK
 			res.status(500).send();
 		} else {
-			console.log('setting session user id ', loggedInUser._id); //CHECK
+			// console.log('setting session user id ', loggedInUser._id); //CHECK
 			req.session.userId = loggedInUser._id;
 			res.json(loggedInUser);
 			// res.redirect('/user/' + loggedInUser._id);

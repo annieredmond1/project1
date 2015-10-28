@@ -2,27 +2,6 @@
 
 $(document).ready(function() {
 
-	//LOGIN: redirect new users to sign-up
-	$('#login-redirect').on('submit', function (e) {
-		e.preventDefault();
-		// send GET request to /login to redirect to /signup
-		$.ajax({
-			type: 'GET',
-			url: '/login',
-			success: function(data) { 
-				//CHECK
-				// console.log(data);
-			},
-			error: function(err) {
-				//CHECK
-				// console.log(err);
-			},
-			complete: function(status) {
-				window.location.href = "/signup";
-			}
-		});
-	});
-
 	//LOGIN: existing user
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
@@ -30,18 +9,16 @@ $(document).ready(function() {
 		var loginData = $(this).serialize();
 		// send POST request to /login with the form data
 		$.ajax({
-			type: 'POST',
+			method: 'POST',
 			url: '/sessions',
 			data: loginData,
 			success: function(data) { 
-				//CHECK
-				// console.log(data);
+				// console.log(data); //CHECK
 				var userId = data._id;
     			window.location.href = "/users/" + userId;
 			},
 			error: function(err) {
-				//CHECK
-				// console.log(err);
+				// console.log(err); //CHECK
 			}
 		});
 	});
@@ -53,18 +30,16 @@ $(document).ready(function() {
 		var signupData = $(this).serialize();
 	    // send POST request to /users with the form data
 	    $.ajax({
-	    	type: 'POST',
+	    	method: 'POST',
 	    	url: '/users',
 	    	data: signupData,
     		success: function(data) { 
-    			//CHECK
-    			console.log(data);
+    			// console.log(data); //CHECK
     			var userId = data._id;
     			window.location.href = "/users/" + userId + "/edit";
     		},
     		error: function(err) {
-    			//CHECK
-    			console.log(err);
+    			// console.log(err); //CHECK
     		}
     	});
 	});
@@ -75,22 +50,20 @@ $(document).ready(function() {
 		// select profile form and serilize its data
 		var profileData = $(this).serialize();
 		var userId = $('#userId').val();
+		console.log(userId); //CHECK
+		console.log(profileData); //CHECK
 		// send PUT request to /users/:id with the form data
 		$.ajax({
-			type: 'PUT',
+			method: 'PUT',
 			url: '/users/' + userId,
 			data: profileData,
 			success: function(data) {
-				//CHECK
-				console.log(data);
-				window.location.href = "/users/" + userId;
+				// console.log(data); //CHECK
 			},
 			error: function(err) {
-				//CHECK
-				console.log(err);
+				// console.log(err); //CHECK
 			}
 		});
+		window.location.href = "/users/" + userId;
 	});
-
-
 });

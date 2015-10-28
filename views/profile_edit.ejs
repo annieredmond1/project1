@@ -4,12 +4,15 @@
 <!-- this has all of our style and client-side script tags -->
 <% include ./_head %>
 <body>
+<div class="container">
 
 <h1>Edit User Profile</h1>
 
 <!-- User Profile Form -->
 <form role="form" id="profile-form">
+  <!-- hidden field: used for pulling userId data -->
   <input id="userId" type="hidden" value="<%= user._id %>">
+  
   <div class="form-group">
     <label for="name">Name:</label>
     <input type="text" class="form-control" id="name" name="name">
@@ -25,19 +28,18 @@
 
   <!-- Instrument Selection Checkbox -->
   <div class="form-group">
-    <label>Select instruments:</label>
-    <div class="checkbox">
-      <label><input type="checkbox"> Guitar</label><br>
-      <label><input type="checkbox"> Bass</label><br>
-      <label><input type="checkbox"> Drums</label><br>
-      <label><input type="checkbox"> Keyboard</label><br>
-      <label><input type="checkbox"> Saxophone</label><br>
-      <label><input type="checkbox"> Beatbox</label>
+    <label for="instruments">Instruments:</label>
+    <div class="checkbox" id="instruments">
+      <label><input type="checkbox" id="guitar" name="guitar" value="Guitar"> Guitar</label><br>
+      <label><input type="checkbox" id="bass" name="bass" value="Bass"> Bass</label><br>
+      <label><input type="checkbox" id="drums" name="drums" value="Drums"> Drums</label><br>
+      <label><input type="checkbox" id="keyboard" name="keyboard" value="Keyboard"> Keyboard</label><br>
     </div>
   </div>
 
   <button type="submit" class="btn btn-default">Update Profile</button>
 </form>
 
+</div>
 </body>
 </html>

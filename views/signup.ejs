@@ -4,6 +4,7 @@
 <!-- this has all of our style and client-side script tags -->
 <% include ./_head %>
 <body>
+<div class="container">
 
 <h1>Sign-Up Page</h1>
 
@@ -11,14 +12,15 @@
 <form role="form" class="form-inline" id="signup-form">
   <div class="form-group">
     <label for="email">Email:</label>
-    <input type="text" class="form-control" id="email" name="email">
+    <input type="email" class="form-control" id="email" name="email">
   </div>
   <div class="form-group">
     <label for="password">Password:</label>
-    <input type="text" class="form-control" id="password" name="password">
+    <input type="password" class="form-control" id="password" name="password">
   </div>
   <button type="submit" class="btn btn-default">Sign-Up</button>
 </form>
 
+</div>
 </body>
 </html>
