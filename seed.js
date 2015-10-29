@@ -27,35 +27,35 @@ var userSample = [
 		name: 'David St. Hubbins',
 		location: 'San Francisco',
 		genres: 'Rock',
-		instrument: 'Guitar',
+		instruments: 'Guitar',
 		summary: 'Frontman of fictional band Spinal Tap.'
 	},
 	{
 		name: 'Nigel Tufnel',
 		location: 'Seattle',
 		genres: 'Rock',
-		instrument: 'Guitar',
+		instruments: 'Guitar',
 		summary: 'Lead Guitarist of fictional band Spinal Tap.'
 	},
 	{
 		name: 'Derek Smalls',
 		location: 'San Francisco',
 		genres: 'Jazz',
-		instrument: 'bass',
+		instruments: 'bass',
 		summary: 'Bassist of fictional band Spinal Tap.'
 	},
 	{
 		name: 'Jeffrey Vanston',
 		location: 'Seattle',
 		genres: 'Jazz',
-		instrument: 'Keyboard',
+		instruments: 'Keyboard',
 		summary: 'Keyboard guy of fictional band Spinal Tap.'
 	},
 	{
 		name: 'Greg Bissonette',
 		location: 'Seattle',
 		genres: 'Jazz',
-		instrument: 'Drums',
+		instruments: 'Drums',
 		summary: 'Drummer of fictional band Spinal Tap.'
 	}
 ];

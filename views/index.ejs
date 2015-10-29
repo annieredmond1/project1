@@ -4,24 +4,26 @@
 <!-- this has all of our style and client-side script tags -->
 <% include ./_head %>
 <body>
-
 <% include ./_navbar %>
+<div class="container text">
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-    
-      <!--  display all users from database -->
-      <% users.forEach(function (user) { %>
-        <!-- interpolate the id into the link to take user to pizza show page -->
-        <a href="/users/<%= user._id %>"> <%= user.name %> </a>
-        <img src="<%= user.image %>">
-      <% }); %>
-      
+  <!--  display all users from database -->
+  <% users.forEach(function (user) { %>
+    <!-- interpolate the id into the link to take user to pizza show page -->
+    <br>
+    <div class="row">
+      <div class="col-sm-3 col-sm-offset-2">
+        <a href="/users/<%= user._id %>"><img src="<%= user.image %>"></a>
+      </div>
+      <div class="col-sm-6">
+        <h2><%= user.name %></h2>
+        <p>Location: <%= user.location %></p><br>
+        <p>Instruments: <%= user.instruments %><br>
+        Genres: <%= user.genres %></p>
+      </div>
     </div>
-  </div>
+  <% }); %>
+
 </div>
-
-
 </body>
 </html>

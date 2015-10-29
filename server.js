@@ -8,6 +8,13 @@ var express = require('express'),
 	session = require('express-session'),
 	db = require('./models/index.js');
 
+// heroku
+mongoose.connect(
+	process.env.MONGOLAB_URI ||
+	process.env.MONGOHQ_URL ||
+	'mongodb://localhost/project1' // plug in the db name you've been using
+);
+
 // MIDDLEWARE //
 
 // set ejs as view engine
