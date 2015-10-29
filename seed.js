@@ -2,7 +2,7 @@
 // simply run: `node seed.js` from the root of this project folder.
 var express = require('express'),
     app = express(),
-    path = require('path'), // What this?
+    // path = require('path'),
     bodyParser = require('body-parser'),
     mongoose = require('mongoose'),
     db = require('./models/user.js');
@@ -43,52 +43,3 @@ db.User.create(userSample, function (err, users){
 	console.log("created", posts.length, "posts");
 	process.exit();
 });
-
-
-// var userSample = [
-// 	{
-// 		name: 'David St. Hubbins',
-// 		location: 'San Francisco',
-// 		instrument: 'Guitar',
-// 		login: {
-// 			username: 'testuser',
-// 			password: 'testpwd'
-// 		}
-// 	},
-// 	{
-// 		name: 'Nigel Tufnel',
-// 		location: 'San Francisco',
-// 		instrument: 'Guitar',
-// 		login: {
-// 			username: 'testuser',
-// 			password: 'testpwd'		
-// 		}
-// 	},
-// 	{
-// 		name: 'Derek Smalls',
-// 		location: 'San Francisco',
-// 		instrument: 'bass',
-// 		login: {
-// 			username: 'testuser',
-// 			password: 'testpwd'
-// 		}
-// 	},
-// 	{
-// 		name: 'Jeffrey Vanston',
-// 		location: 'San Francisco',
-// 		instrument: 'Keyboard',
-// 		login: {
-// 			username: 'testuser',
-// 			password: 'testpwd'
-// 		}
-// 	},
-// 	{
-// 		name: 'Greg Bissonette',
-// 		location: 'San Francisco',
-// 		instrument: 'Drums',
-// 		login: {
-// 			username: 'testuser',
-// 			password: 'testpwd'
-// 		}
-// 	}
-// ];

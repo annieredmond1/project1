@@ -3,7 +3,7 @@
 // REQUIREMENTS: express framework and additional modules //
 var express = require('express'),
 	app = express(),
-	path = require('path'),
+	// path = require('path'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
 	session = require('express-session'),
@@ -36,6 +36,10 @@ app.get('/login', function (req, res) {
 app.get('/signup', function (req, res) {
 	res.render('signup');
 });
+
+/*
+TODO
+*/
 
 // show index page: view all users
 app.get('/users', function (req, res) {
