@@ -15,7 +15,7 @@ $(document).ready(function() {
 			success: function(data) {
 				// console.log(data); //CHECK
 				var userId = data._id;
-    			window.location.href = "/users/" + userId;
+    			window.location.href = '/users/' + userId;
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
@@ -36,7 +36,7 @@ $(document).ready(function() {
     		success: function(data) {
     			// console.log(data); //CHECK
     			var userId = data._id;
-    			window.location.href = "/users/" + userId + "/edit";
+    			window.location.href = '/users/' + userId + '/edit';
     		},
     		error: function(err) {
     			// console.log(err); //CHECK
@@ -64,6 +64,6 @@ $(document).ready(function() {
 				// console.log(err); //CHECK
 			}
 		});
-		window.location.href = "/users/" + userId; //WHY does this have to be after ajax instead of under success?
+		window.location.href = '/users/' + userId; //WHY does this have to be after ajax instead of under success?
 	});
 });

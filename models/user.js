@@ -1,12 +1,13 @@
+// REQUIREMENTS //
 var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt');
 
-// create schema
+// DEFINE SCHEMA //
 var UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
-		required: true,
-		unique: true
+		unique: true,
+		required: true
 	},
 	passwordDigest: String,
 	name: String,
@@ -25,7 +26,7 @@ UserSchema.statics.createSecure = function(email, password, callback) {
 
 	// hash password user enters at sign up
 	bcrypt.genSalt(function (err, salt) {
-		console.log('salt: ', salt);  // changes every time
+		console.log("salt: ", salt);  // changes every time
 		bcrypt.hash(password, salt, function (err, hash) {
 
 	  		// create the new user (save to db) with hashed password
@@ -45,7 +46,7 @@ UserSchema.statics.authenticate = function(email, password, callback) {
 		console.log(foundUser);
     	// throw error if can't find user
 		if (!foundUser) {
-			console.log('No user with email ' + email);
+			console.log("No user with email " + email);
 			callback("Error: no user found", null);  // better error structures are available, but a string is good enough for now
     	// if we found a user, check if password is correct
 		} else if (foundUser.checkPassword(password)) {
@@ -62,7 +63,6 @@ UserSchema.methods.checkPassword = function(password) {
 	return bcrypt.compareSync(password, this.passwordDigest);
 };
 
-// create a model
+// create a new model, then export
 var User = mongoose.model('User', UserSchema);
-// export file
 module.exports = User;

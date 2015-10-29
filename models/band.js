@@ -1,15 +1,17 @@
-var mongoose = require("mongoose"),
+// REQUIREMENTS //
+var mongoose = require('mongoose'),
 	User = require('./user');
 
-// create schema
+// DEFINE SCHEMA //
 var BandSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	genres: String,
+	image: String,
+	summary: String,
 	members: [{type: Schema.Types.ObjectId, ref: 'User'}]
 });
 
-// create a model
+// create a new model, then export
 var Band = mongoose.model('Band', BandSchema);
-// export file
 module.exports = Band;

@@ -3,7 +3,6 @@
 // REQUIREMENTS: express framework and additional modules //
 var express = require('express'),
 	app = express(),
-	// path = require('path'),
 	bodyParser = require('body-parser'),
 	mongoose = require('mongoose'),
 	session = require('express-session'),
@@ -41,10 +40,10 @@ app.get('/signup', function (req, res) {
 app.get('/users', function (req, res) {
 	db.User.find({}, function (err, users) {
 		if (err) {
-		// console.log('database error: ', err); //CHECK
+		// console.log("database error: ", err); //CHECK
 		} else {
 			// render profile template with user's data
-			// console.log('loading profile of logged in user'); //CHECK
+			// console.log("loading profile of logged in user"); //CHECK
 			res.render('index', {users: users});
 		}
 	});
@@ -52,15 +51,15 @@ app.get('/users', function (req, res) {
 
 // show user profile view page
 app.get('/users/:userId', function (req, res) {
-	// console.log('session user id: ', req.session.userId); //CHECK
+	// console.log("session user id: ", req.session.userId); //CHECK
 	// find the user currently logged in
 	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
 		if (err) {	
-			// console.log('database error: ', err); //CHECK
+			// console.log("database error: ", err); //CHECK
 			res.redirect('/login');
 		} else {
 			// render profile template with user's data
-			// console.log('loading profile of logged in user'); //CHECK
+			// console.log("loading profile of logged in user"); //CHECK
 			res.render('profile_view', {user: currentUser});
 		}
 	});
@@ -70,7 +69,7 @@ app.get('/users/:userId', function (req, res) {
 app.get('/users/:userId/edit', function (req, res) {
 	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
 		if (err) {
-			// console.log('database error: ', err); //CHECK
+			// console.log("database error: ", err); //CHECK
 			res.redirect('/login');
 		} else {
 			// render profile editing template with user's data
@@ -111,10 +110,10 @@ app.post('/sessions', function (req, res) {
 	// call authenticate function to check if password user entered is correct
 	db.User.authenticate(req.body.email, req.body.password, function (err, loggedInUser) {
 		if (err) {
-			// console.log('authentication error: ', err); //CHECK
+			// console.log("authentication error: ", err); //CHECK
 			res.status(500).send();
 		} else {
-			// console.log('setting session user id ', loggedInUser._id); //CHECK
+			// console.log("setting session user id ", loggedInUser._id); //CHECK
 			req.session.userId = loggedInUser._id;
 			res.json(loggedInUser);
 			// res.redirect('/user/' + loggedInUser._id);
