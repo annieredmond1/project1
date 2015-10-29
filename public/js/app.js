@@ -51,7 +51,7 @@ $(document).ready(function() {
 		var profileData = $(this).serialize();
 		var userId = $('#userId').val();
 		// console.log(userId); //CHECK
-		// console.log(profileData); //CHECK
+		console.log(profileData); //CHECK
 		// send PUT request to /users/:id with the form data
 		$.ajax({
 			method: 'PUT',

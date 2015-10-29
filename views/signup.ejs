@@ -5,11 +5,10 @@
 <% include ./_head %>
 <body>
 <div class="container">
-
 <h1>Sign-Up Page</h1>
 
 <!-- New User Sign-Up Form -->
-<form role="form" class="form-inline" id="signup-form">
+<form role="form" id="signup-form">
   <div class="form-group">
     <label for="email">Email:</label>
     <input type="email" class="form-control" id="email" name="email" autofocus>
@@ -24,14 +23,3 @@
 </div>
 </body>
 </html>
-
-<!-- <h1>Profile</h1>
-<hr>
-<h2>Welcome!
-  <% if (user && user.email) { %>
-    You're logged in as <%= user.email %>!</h2>
-    <a href="/logout" class="btn btn-default">Log Out</a>
-  <% } else { %>
-    You're not logged in. </h2>
-    <a href="/login">Log in</a>
-  <% } %> -->

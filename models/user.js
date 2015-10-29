@@ -1,4 +1,4 @@
-var mongoose = require("mongoose"),
+var mongoose = require('mongoose'),
 	bcrypt = require('bcrypt');
 
 // create schema
@@ -12,7 +12,9 @@ var UserSchema = new mongoose.Schema({
 	name: String,
 	location: String,
 	genres: String,
-	instruments: String
+	instruments: String,
+	image: {type: String, default: 'http://placehold.it/200x200'}, // URL to image
+	summary: String
 });
 
 // use form data to create db user, with a hashed and salted password

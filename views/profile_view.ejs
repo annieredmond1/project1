@@ -5,7 +5,6 @@
 <% include ./_head %>
 <body>
 <div class="container">
-
 <h1>User Profile Page</h1>
 
 <!-- Redirect to edit profile info -->
@@ -14,7 +13,7 @@
 <!-- Profile Pic/Info -->
 <div class="row">
   <div class="col-sm-4 col-sm-offset-1">
-    <img src="http://placehold.it/200x200">
+    <img src="<%= user.image %>">
   </div>
   <div class="col-sm-6">
     <h2>Name: <%= user.name %></h2>
@@ -24,13 +23,14 @@
   </div>
 </div>
 
+
 <!-- TODO -->
 
 <!-- About Me -->
 <div class="row">
   <div class="col-sm-8 col-sm-offset-1">
-    <h1>About:</h1>
-    <p>Summary about myself goes here.</p>
+    <h2>About:</h2>
+    <p> <%= user.summary %> </p>
   </div>
 </div>
 

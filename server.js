@@ -37,10 +37,6 @@ app.get('/signup', function (req, res) {
 	res.render('signup');
 });
 
-/*
-TODO
-*/
-
 // show index page: view all users
 app.get('/users', function (req, res) {
 	db.User.find({}, function (err, users) {
@@ -101,7 +97,9 @@ app.put('/users/:userId', function (req, res) {
 		name: req.body.name,
 		location: req.body.location,
 		genres: req.body.genres,
-		instruments: req.body.instruments
+		instruments: req.body.instruments,
+        image: req.body.image,
+        summary: req.body.summary
 	},
 	function (err, currentUser) {
 		res.redirect('/users/' + req.session.userId);

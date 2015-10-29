@@ -5,26 +5,23 @@
 <% include ./_head %>
 <body>
 
+<% include ./_navbar %>
 
-
-<!-- TODO -->
-<div class="container text-center">
+<div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
     
-      
+      <!--  display all users from database -->
+      <% users.forEach(function (user) { %>
+        <!-- interpolate the id into the link to take user to pizza show page -->
+        <a href="/users/<%= user._id %>"> <%= user.name %> </a>
+        <img src="<%= user.image %>">
+      <% }); %>
       
     </div>
   </div>
 </div>
 
 
-
 </body>
 </html>
-
-<!--  display all the pizzas from the database-->
-<% pizzas.forEach(function(pizza) { %>
-  <!-- interpolate the id into the link to take user to pizza show page -->
-  <p><a href="/pizzas/<%= pizza._id %>"><%= pizza.size %> <%= pizza.crust %></a></p>
-<% }); %>
