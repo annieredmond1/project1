@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 
 // connect to database
-mongoose.connect('mongodb://localhost/project1');
+// mongoose.connect('mongodb://localhost/project1');
 
 // heroku
 mongoose.connect(
