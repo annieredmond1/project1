@@ -15,7 +15,7 @@ $(document).ready(function() {
 			success: function(data) {
 				// console.log(data); //CHECK
 				var userId = data._id;
-    			window.location.href = '/users/' + userId;
+				window.location.href = '/users/' + userId;
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
@@ -26,22 +26,22 @@ $(document).ready(function() {
 	//SIGN-UP: create new user
 	$('#signup-form').on('submit', function (e) {
 		e.preventDefault();
-	    // select sign-up form and serialize its data
+		 // select sign-up form and serialize its data
 		var signupData = $(this).serialize();
-	    // send POST request to /users with the form data
-	    $.ajax({
-	    	method: 'POST',
-	    	url: '/users',
-	    	data: signupData,
-    		success: function(data) {
-    			// console.log(data); //CHECK
-    			var userId = data._id;
-    			window.location.href = '/users/' + userId + '/edit';
-    		},
-    		error: function(err) {
-    			// console.log(err); //CHECK
-    		}
-    	});
+		 // send POST request to /users with the form data
+		 $.ajax({
+			method: 'POST',
+			url: '/users',
+			data: signupData,
+			success: function(data) {
+				// console.log(data); //CHECK
+				var userId = data._id;
+				window.location.href = '/users/' + userId + '/edit';
+			},
+			error: function(err) {
+				// console.log(err); //CHECK
+			}
+		});
 	});
 
 	//UPDATE profile
