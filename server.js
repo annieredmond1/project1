@@ -27,6 +27,11 @@ app.use(session({
 // ROUTES //
 
 // show login page
+app.get('/', function (req, res) {
+	res.redirect('/login');
+});
+
+// show login page
 app.get('/login', function (req, res) {
 	res.render('login');
 });
