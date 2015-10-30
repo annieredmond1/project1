@@ -5,6 +5,7 @@ $(document).ready(function() {
 	//LOGIN: existing user
 	$('#login-form').on('submit', function (e) {
 		e.preventDefault();
+		// $('#toggle-login').toggle($(this).); // TODO: toggle login button on navbar
 		// select login form and serialize its data
 		var loginData = $(this).serialize();
 		// send POST request to /login with the form data
