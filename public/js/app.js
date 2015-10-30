@@ -16,7 +16,7 @@ $(document).ready(function() {
 			success: function(data) {
 				// console.log(data); //CHECK
 				var userId = data._id;
-				window.location.href = '/sessions/';
+				window.location.href = '/users/' + userId;
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
@@ -37,7 +37,7 @@ $(document).ready(function() {
 			success: function(data) {
 				// console.log(data); //CHECK
 				var userId = data._id;
-				window.location.href = '/sessions/edit';
+				window.location.href = '/users/' + userId + '/edit';
 			},
 			error: function(err) {
 				// console.log(err); //CHECK
