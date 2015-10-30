@@ -4,33 +4,31 @@
 <!-- this has all of our style and client-side script tags -->
 <% include ./_head %>
 <body>
+<% include ./_navbar %>
 <div class="container">
-<h1>User Profile Page</h1>
-
-<!-- Redirect to edit profile info -->
-<a href="/users/<%= user._id %>/edit">Edit profile</a>
-
-<!-- Profile Pic/Info -->
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-1">
-    <img src="<%= user.image %>">
-  </div>
-  <div class="col-sm-6">
-    <h2> Name: <%= user.name %> </h2>
-    <h2> Location: <%= user.location %> </h1>
-    <h2> Genres: <%= user.genres %> </h2>
-    <h2> Instruments: <%= user.instruments %> </h2>
-  </div>
-</div>
-
-<!-- About Me -->
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-1">
-    <h2>About:</h2>
-    <p> <%= user.summary %> </p>
-  </div>
-</div>
-
-</div>
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h1> <%= user.name %> </h1>
+    </div>
+  </div><!-- /.row -->
+  <!-- Profile Pic/Info -->
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+      <img src="<%= user.image %>">
+    </div>
+    <div class="col-sm-6">
+      <p> Location: <%= user.location %> </p>
+      <p> Genres: <%= user.genres %> </p>
+      <p> Instruments: <%= user.instruments %> </p>
+    </div>
+  </div><!-- /.row -->
+  <!-- About Me -->
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1">
+      <h2>About:</h2>
+      <p> <%= user.summary %> </p>
+    </div>
+  </div><!-- /.row -->
+</div><!-- /.container -->
 </body>
 </html>
