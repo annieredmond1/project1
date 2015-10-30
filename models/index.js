@@ -1,8 +1,7 @@
 // REQUIREMENTS //
 var mongoose = require('mongoose');
 
-// connect to database
-// mongoose.connect('mongodb://localhost/project1');
+// CONNECT DATABASE //
 
 // heroku
 mongoose.connect(
