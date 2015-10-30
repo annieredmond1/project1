@@ -6,10 +6,13 @@ var mongoose = require('mongoose'),
 var UserSchema = new mongoose.Schema({
 	email: {
 		type: String,
-		unique: true,
+		required: true,
+		unique: true
+	},
+	passwordDigest: {
+		type: String,
 		required: true
 	},
-	passwordDigest: String,
 	name: String,
 	location: String,
 	genres: String,
