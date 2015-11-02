@@ -58,23 +58,23 @@ app.post('/sessions', function (req, res) {
 });
 
 // show login user profile
-app.get('/sessions', function (req, res) {
-	// console.log("session user id: ", req.session.userId); //CHECK
-	// find the user currently logged in
-	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
-		if (err) {	
-			// console.log("database error: ", err); //CHECK
-			res.redirect('/login');
-		} else {
-			// render profile template with user's data
-			// console.log("loading profile of logged in user"); //CHECK
-			res.render('profile_view', {user: currentUser});
-		}
-	});
-});
+// app.get('/sessions', function (req, res) {
+// 	// console.log("session user id: ", req.session.userId); //CHECK
+// 	// find the user currently logged in
+// 	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
+// 		if (err) {	
+// 			// console.log("database error: ", err); //CHECK
+// 			res.redirect('/login');
+// 		} else {
+// 			// render profile template with user's data
+// 			// console.log("loading profile of logged in user"); //CHECK
+// 			res.render('profile_view', {user: currentUser});
+// 		}
+// 	});
+// });
 
 // show profile edit form for login user
-app.get('/sessions/edit', function (req, res) {
+app.get('/users/:userId/edit', function (req, res) {
 	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
 		if (err) {
 			// console.log("database error: ", err); //CHECK
@@ -128,7 +128,8 @@ app.get('/users', function (req, res) {
 		// console.log("database error: ", err); //CHECK
 		} else {
 			// render profile template with user's data
-			// console.log("loading profile of logged in user"); //CHECK
+			console.log(users);
+			console.log("loading profile of logged in user"); //CHECK
 			res.render('index', {users: users});
 		}
 	});
@@ -138,7 +139,7 @@ app.get('/users', function (req, res) {
 app.get('/users/:userId', function (req, res) {
 	// console.log("session user id: ", req.session.userId); //CHECK
 	// find the user currently logged in
-	db.User.findOne({_id: req.params.userId}, function (err, currentUser) {
+	db.User.findOne({_id: req.session.userId}, function (err, currentUser) {
 		if (err) {	
 			// console.log("database error: ", err); //CHECK
 			res.redirect('/login');

@@ -4,7 +4,49 @@
 <!-- this has all of our style and client-side script tags -->
 <% include ./_head %>
 <body>
-<% include ./_navbar %>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+<!--       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button> -->
+      <a class="navbar-brand" href="/users">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <!-- Search Form -->
+      <form class="navbar-form navbar-left" role="search" id="search-form">
+        <div class="form-group">
+          <input type="search" class="form-control" id="search" name="search" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Find</button>
+      </form>
+
+      <!-- Dropdown -->
+      <ul class="nav navbar-nav navbar-right">
+        <li id="toggle-login"><a href="/login">Login</a></li> <!-- TODO: remove login is already logged in -->
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          User <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 <div class="container">
 
   <!--  display all users from database -->
@@ -16,10 +58,10 @@
         <a href="/users/<%= user._id %>"><img src="<%= user.image %>"></a>
       </div>
       <div class="col-sm-6">
-        <h2><%= user.name %></h2>
-        <p>Location: <%= user.location %></p><br>
-        <p>Instruments: <%= user.instruments %><br>
-        Genres: <%= user.genres %></p>
+        <h2><%=user.name%></h2>
+        <p>Location: <%=user.location%></p><br>
+        <p>Instruments: <%=user.instruments%><br>
+        Genres: <%=user.genres%></p>
       </div>
     </div>
   <% }); %>
